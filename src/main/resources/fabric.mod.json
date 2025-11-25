@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "id": "tontufosmp2",
+  "version": "${version}",
+  
+  "name": "Tontufosmp2",
+  "description": "Custom SMP mod with features, items, utilities and gameplay improvements.",
+  
+  "authors": [
+    "Chunny",
+    "Brianchatran"
+  ],
+
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/tontufosmp2/icon.png",
+
+  "environment": "*",
+
+  "entrypoints": {
+    "main": [
+      "tontufosmp2.Tontufosmp2"
+    ],
+    "client": [
+      "tontufosmp2.Tontufosmp2Client"
+    ],
+    "fabric-datagen": [
+      "tontufosmp2.Tontufosmp2DataGenerator"
+    ]
+  },
+
+  "mixins": [
+    "tontufosmp2.mixins.json",
+    {
+      "config": "tontufosmp2.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.18.1",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "fabric-api": "*"
+  },
+
+  "suggests": {
+    "another-mod": "*"
+  }
+}
