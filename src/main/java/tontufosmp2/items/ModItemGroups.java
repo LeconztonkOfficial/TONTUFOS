@@ -12,7 +12,7 @@ import tontufosmp2.Tontufosmp2;
 public class ModItemGroups {
 public static final ItemGroup MAGIA_ITEM_GROUP = registrerItemGroup("magic_group",
         FabricItemGroup.builder().displayName(Text.translatable("itemGroup.tontufosmp2.magic_group"))
-                .icon(() -> new ItemStack(ModItems.GARRADIMENCIONAL)).entries((displayContext, entries) -> {
+                .icon(() -> new ItemStack(ModItems.ICONO_MAGIA)).entries((displayContext, entries) -> {
       entries.add(ModItems.GARRADIMENCIONAL);
       }).build()
 );

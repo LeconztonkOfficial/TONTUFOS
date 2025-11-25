@@ -9,7 +9,13 @@ import tontufosmp2.Tontufosmp2;
 
 
 public class ModItems {
+    //Item Garra Dimencional
     public static final Item GARRADIMENCIONAL = registrerItem("garradimencional", new Item(new Item.Settings()));
+    // Nuevo ítem fantasma para usar como icono del ItemGroup
+    public static final Item ICONO_MAGIA = registrerItem("icono_magia", new Item(new Item.Settings()));
+
+
+
 
     private static Item registrerItem (String itemId, Item item){
        return Registry.register(Registries.ITEM, new Identifier(Tontufosmp2.MOD_ID, itemId), item);
