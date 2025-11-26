@@ -1,4 +1,37 @@
 {
+
+  "itemGroup.tontufosmp2.magic_group": "Items Magicos",
+  "itemGroup.tontufosmp2.maldiciones": "Maldiciones",
+
+
   "item.tontufosmp2.garradimencional": "Garra Dimencional",
-  "itemGroup.tontufosmp2.magic_group": "Items Magicos"
+  "item.tontufosmp2.cojoinverso": "Collar del Ojo Inverso",
+  "item.tontufosmp2.cristaldelrecuerdo": "Cristal del Recuerdo",
+  "item.tontufosmp2.huevopurificador": "Huevo Purificador",
+  "item.tontufosmp2.mascaradelsileciosepulcral": "Mascara del Silencio Sepulcral",
+  "item.tontufosmp2.mazojgornet": "Mazo de JGORNET",
+  "item.tontufosmp2.orbepotenciador": "Orbe Potenciador",
+  "item.tontufosmp2.picointerdimencional": "Pico Interdimencional",
+  "item.tontufosmp2.pocionluz": "Pocion de Luz",
+  "item.tontufosmp2.polvodeconfucion": "Polvo de confución",
+  "item.tontufosmp2.sandwichdelamuerte": "El Sandwich de la Muerte",
+  "item.tontufosmp2.talismanprotector": "Talisman Protector",
+  "item.tontufosmp2.tiempocomprimido": "Frasco de Tiempo Compreso",
+  "item.tontufosmp2.taladroexcavador": "Taladro Excavador",
+  "item.tontufosmp2.agoniaveterano": "Agonia del Veterano",
+  "item.tontufosmp2.cerebrofragmento": "Cerebro Fragmentado",
+  "item.tontufosmp2.corazonfragmentado": "Corazon Fragmentado",
+  "item.tontufosmp2.decadenciadelciclo": "Decadencia del Ciclo",
+  "item.tontufosmp2.ecodeldolor": " Eco del Dolor",
+  "item.tontufosmp2.ecodelpasado": "Eco del Pasado",
+  "item.tontufosmp2.fatigaancestral": "Fatiga Ancestral",
+  "item.tontufosmp2.hambredelantiguo": "Hambre del Antiguo",
+  "item.tontufosmp2.hambresombra": "Hambre de las Sombras",
+  "item.tontufosmp2.lenguaplomo": "Lengua de Plomo",
+  "item.tontufosmp2.ligamentodelalma": "Ligamento del Alma",
+  "item.tontufosmp2.mantodelolvido": "Manto del Olvido",
+  "item.tontufosmp2.ojomaldito": "Ojo Maldito",
+  "item.tontufosmp2.piepesado": "Pies Pesados",
+  "item.tontufosmp2.sedeterna": "Sed Eterna",
+  "item.tontufosmp2.tormentonocturno": "Tormento Nocturno"
 }
