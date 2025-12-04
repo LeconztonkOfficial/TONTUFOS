@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "tontufosmp2.mixin.client",
+  "compatibilityLevel": "JAVA_17",
+
+  "client": [
+    "ConfusionCameraMixin"
+  ],
+
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

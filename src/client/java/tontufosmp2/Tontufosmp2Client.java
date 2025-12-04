@@ -1,10 +1,18 @@
 package tontufosmp2;
 
+
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
+import tontufosmp2.entities.ModEntities;
 
 public class Tontufosmp2Client implements ClientModInitializer {
-	@Override
-	public void onInitializeClient() {
-		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
-	}
-}
+
+    @Override
+    public void onInitializeClient() {
+        // Registrar renderer del proyectil de confusión
+        EntityRendererRegistry.register(
+                ModEntities.CONFUSION_PROJECTILE,
+                FlyingItemEntityRenderer::new
+        );
+    }}

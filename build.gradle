@@ -77,3 +77,9 @@ publishing {
         // Si algún día publicas tu mod aquí lo configuras.
     }
 }
+fabricApi {
+    configureDataGeneration()
+}
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ABA",
+    "CDC",
+    "ABA"
+  ],
+  "key": {
+    "A": { "item": "minecraft:redstone" },
+    "B": { "item": "minecraft:sugar" },
+    "C": { "item": "minecraft:leather" },
+    "D": { "item": "minecraft:string" }
+  },
+  "result": {
+    "item": "tontufosmp2:polvodeconfucion",
+    "count": 1
+  }
+}

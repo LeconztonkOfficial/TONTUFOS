@@ -1,6 +1,7 @@
 package tontufosmp2.items;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import tontufosmp2.items.PolvoDeConfusionItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -30,7 +31,7 @@ public class ModItems {
     // Item Poción de Luz
     public static final Item POCIONLUZ = registrerItem("pocionluz", new Item(new Item.Settings()));
     // Item Polvo de Confucio
-    public static final Item POLVODECONFUCION = registrerItem("polvodeconfucion", new Item(new Item.Settings()));
+    public static final Item POLVODECONFUCION = registrerItem("polvodeconfucion", new PolvoDeConfusionItem(new Item.Settings()));
     // Item Sándwich de la Muerte
     public static final Item SANDIWCHDELAMUERTE = registrerItem("sandwichdelamuerte", new Item(new Item.Settings()));
     // Item Taladro Excavador

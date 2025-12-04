@@ -1,0 +1,5 @@
+{
+  "type": "minecraft:status_effect",
+  "effect": "tontufosmp2:confusion",
+  "icon": "tontufosmp2:mob_effect/polvodeconfucion_effect"
+}
