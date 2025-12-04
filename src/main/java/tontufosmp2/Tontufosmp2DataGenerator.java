@@ -6,10 +6,10 @@ import tontufosmp2.datagen.DatagenModelProvider;
 import tontufosmp2.datagen.DatagenRecipeProvider;
 
 public class Tontufosmp2DataGenerator implements DataGeneratorEntrypoint {
-	@Override
-	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
+    @Override
+    public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
         pack.addProvider(DatagenModelProvider::new);
         pack.addProvider(DatagenRecipeProvider::new);
-	}
+    }
 }
