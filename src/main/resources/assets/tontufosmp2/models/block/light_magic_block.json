@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "tontufosmp2:block/light_magic_block"
+  }
+}

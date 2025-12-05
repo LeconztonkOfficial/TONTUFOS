@@ -25,7 +25,19 @@ public class ModEntities {
                             .trackedUpdateRate(10)
                             .build()
             );
-
+    public static final EntityType<ThrowableLightEntity> THROWABLE_LIGHT =
+            Registry.register(
+                    Registries.ENTITY_TYPE,
+                    new Identifier(Tontufosmp2.MOD_ID, "throwable_light"),
+                    FabricEntityTypeBuilder.<ThrowableLightEntity>create(
+                                    SpawnGroup.MISC,
+                                    (type, world) -> new ThrowableLightEntity(type, world)
+                            )
+                            .dimensions(EntityDimensions.fixed(0.25f, 0.25f))
+                            .trackRangeBlocks(64)
+                            .trackedUpdateRate(10)
+                            .build()
+            );
     public static void registerModEntities() {
         Tontufosmp2.LOGGER.info("Registrando entidades de Tontufosmp2");
     }

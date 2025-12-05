@@ -29,7 +29,7 @@ public class ModItems {
     // Item Pico Interdimencional
     public static final Item PICOINTERDIMENCIONAL = registrerItem("picointerdimencional", new Item(new Item.Settings()));
     // Item Poción de Luz
-    public static final Item POCIONLUZ = registrerItem("pocionluz", new Item(new Item.Settings()));
+    public static final Item POCIONLUZ = registrerItem("pocionluz", new PocionLuzItem(new Item.Settings()));
     // Item Polvo de Confucio
     public static final Item POLVODECONFUCION = registrerItem("polvodeconfucion", new PolvoDeConfusionItem(new Item.Settings()));
     // Item Sándwich de la Muerte
