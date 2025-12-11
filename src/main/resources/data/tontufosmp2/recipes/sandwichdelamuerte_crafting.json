@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BCB",
+    "MSM",
+    "BEB"
+  ],
+  "key": {
+    "B": { "item": "minecraft:bread" },
+    "C": { "item": "minecraft:cooked_chicken" },
+    "M": { "item": "minecraft:red_mushroom" },
+    "S": { "item": "minecraft:sweet_berries" },
+    "E": { "item": "minecraft:egg" }
+  },
+  "result": {
+    "item": "tontufosmp2:sandwichdelamuerte",
+    "count": 1
+  }
+}

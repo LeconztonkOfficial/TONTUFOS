@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "pattern": [
+    " S ",
+    " B ",
+    " M "
+  ],
+  "ingredients": [
+    { "item": "minecraft:glass_bottle" },
+    { "item": "minecraft:bone_meal" },
+    { "item": "minecraft:sugar" }
+  ],
+  "result": {
+    "item": "tontufosmp2:tiempocomprimido",
+    "count": 1
+  }
+}

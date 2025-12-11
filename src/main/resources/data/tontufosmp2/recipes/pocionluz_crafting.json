@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "pattern": [
+    " G ",
+    " B ",
+    " S "
+  ],
+  "ingredients": [
+    { "item": "minecraft:glass_bottle" },
+    { "item": "minecraft:glowstone_dust" },
+    { "item": "minecraft:sea_pickle" }
+  ],
+  "result": {
+    "item": "tontufosmp2:pocionluz",
+    "count": 1
+  }
+}

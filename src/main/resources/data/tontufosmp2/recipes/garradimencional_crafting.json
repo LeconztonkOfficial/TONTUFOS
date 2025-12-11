@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AGA",
+    "WSI",
+    " S "
+  ],
+  "key": {
+    "A": { "item": "minecraft:amethyst_shard" },
+    "G": { "item": "minecraft:ghast_tear" },
+    "W": { "item": "minecraft:white_wool" },
+    "S": { "item": "minecraft:soul_sand" },
+    "I": { "item": "minecraft:iron_ingot" }
+  },
+  "result": {
+    "item": "tontufosmp2:garradimencional",
+    "count": 1
+  }
+}

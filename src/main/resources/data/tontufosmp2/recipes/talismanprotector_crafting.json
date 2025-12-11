@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "N N",
+    "NPN",
+    " L "
+  ],
+  "key": {
+    "N": { "item": "minecraft:iron_nugget" },
+    "P": { "item": "minecraft:paper" },
+    "L": { "item": "minecraft:leather" }
+  },
+  "result": {
+    "item": "tontufosmp2:talismanprotector",
+    "count": 1
+  }
+}

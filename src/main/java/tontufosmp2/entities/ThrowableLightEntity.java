@@ -1,6 +1,7 @@
 package tontufosmp2.entities;
 
 
+
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;

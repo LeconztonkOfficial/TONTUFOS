@@ -3,8 +3,8 @@ package tontufosmp2;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import tontufosmp2.entities.ModEntities;
+import tontufosmp2.client.renderer.InvisibleEntityRenderer;
 
 
 public class Tontufosmp2Client implements ClientModInitializer {
@@ -14,11 +14,15 @@ public class Tontufosmp2Client implements ClientModInitializer {
         // Registrar renderer del proyectil de confusión
         EntityRendererRegistry.register(
                 ModEntities.CONFUSION_PROJECTILE,
-                FlyingItemEntityRenderer::new
+                InvisibleEntityRenderer::new
         );
 
+
         EntityRendererRegistry.register(
-                ModEntities.THROWABLE_LIGHT, // Asegúrate de que este sea el nombre de tu entidad en ModEntities
-                FlyingItemEntityRenderer::new
+                ModEntities.THROWABLE_LIGHT,
+                ctx -> new InvisibleEntityRenderer<>(ctx)
         );
-    }}
+
+
+    }
+}
