@@ -10,18 +10,13 @@ import tontufosmp2.Tontufosmp2;
 
 public class ModBlocks {
 
-    /**
-     * Bloque de luz temporal e invisible.
-     * - Emite un nivel de luz de 15 (el máximo).
-     * - No tiene colisiones, por lo que los jugadores y entidades pueden atravesarlo.
-     * - Es completamente invisible y no obstruye la visión.
-     * - Se destruye a sí mismo después de un tiempo (ver TemporaryLightBlock.java).
-     */
+
     public static final Block TEMPORARY_LIGHT_BLOCK = register(
             "temporary_light_block",
             new TemporaryLightBlock(
                     FabricBlockSettings.copyOf(Blocks.AIR) // Copia propiedades del aire (invisible, sin colisión)
-                            .luminance(s -> 15) // Pero le añade luz
+                            .luminance(state -> state.get(TemporaryLightBlock.BOOSTED) ? 15 : 10) // Luminosidad condicional
+                                                                                        // (luz cuando se tira agachado) : (cuando se tira normal)
                             .nonOpaque() // Asegura que no renderice caras
             )
     );

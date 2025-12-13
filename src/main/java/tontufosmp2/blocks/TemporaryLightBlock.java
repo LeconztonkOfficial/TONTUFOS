@@ -14,24 +14,28 @@ import net.minecraft.world.World;
 
 public class TemporaryLightBlock extends Block {
 
-    // Define una nueva propiedad de estado para controlar cuando tiene particulas
+    // Define una nueva propiedad de estado para controlar la fase de partículas
     public static final BooleanProperty HAS_PARTICLES = BooleanProperty.of("has_particles");
+    // Define una nueva propiedad para aumentar la potencia de la luz
+    public static final BooleanProperty BOOSTED = BooleanProperty.of("boosted");
 
     public TemporaryLightBlock(Settings settings) {
         super(settings);
-        // Establece el estado por defecto HAS_PARTICLES 'true'.
-        setDefaultState(getStateManager().getDefaultState().with(HAS_PARTICLES, true));
+        // Establece el estado DEFAULT del bloque.
+        setDefaultState(getStateManager().getDefaultState()
+                .with(HAS_PARTICLES, true)
+                .with(BOOSTED, false)); // Default la luz no esta potenciada
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        // Añade propiedad de HAS_PARTICLES
-        builder.add(HAS_PARTICLES);
+        // Añade las nuevas propiedades de estado al bloque
+        builder.add(HAS_PARTICLES, BOOSTED);
     }
 
     @Override
     public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.INVISIBLE; // El bloque sigue siendo invisible.
+        return BlockRenderType.INVISIBLE; // El bloque sigue siendo invisible
     }
 
     /**
@@ -46,10 +50,9 @@ public class TemporaryLightBlock extends Block {
     @Override
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving) {
         super.onBlockAdded(state, world, pos, oldState, isMoving);
-        // 80 ticks (4 segundos).
-        // termina las particulas
+        // Programa una actualización para este bloque dentro de 80 ticks (4 segundos).
+        // Este será el final de la fase de partículas.
         world.scheduleBlockTick(pos, this, 80);
-        //TODO: quizas agregar el tiempo que tarda en mostrar particulas en el archivo config del server si es posible
     }
 
     /**
@@ -64,10 +67,10 @@ public class TemporaryLightBlock extends Block {
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (state.get(HAS_PARTICLES)) {
-            // Si el bloque está en estado HAS_PARTICLES, cambia su estado a 'sin partículas'
-
+            // Si el bloque está en la fase de partículas, cambia su estado a 'sin partículas'
+            // y programa la siguiente actualización para su eliminación.
             world.setBlockState(pos, state.with(HAS_PARTICLES, false));
-            // 120 ticks (6 segundos)
+            // Programa la eliminación del bloque para dentro de 120 ticks (6 segundos).
             world.scheduleBlockTick(pos, this, 120);
         } else {
             // Si el bloque ya no tiene partículas, se elimina del mundo.
@@ -75,15 +78,17 @@ public class TemporaryLightBlock extends Block {
         }
     }
 
-
-     // Genera partículas en el lado del cliente si el bloque está en la fase de partículas.
-
+    /**
+     * Genera partículas en el lado del cliente si el bloque está en la fase de partículas.
+     * @param state El estado actual del bloque.
+     * @param world El mundo en el que se encuentra el bloque.
+     * @param pos La posición del bloque.
+     * @param random Una instancia de Random.
+     */
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         if (state.get(HAS_PARTICLES)) {
             // Genera partículas blancas en una ubicación aleatoria dentro del bloque.
-            // Esto solo pone particulas en el bloque que cae , pero quizas estaria bueno hacerlo que aparezcan alrededor
-            // aunque esto podria afectar el rendimiento ?¿
             double x = pos.getX() + random.nextDouble();
             double y = pos.getY() + random.nextDouble();
             double z = pos.getZ() + random.nextDouble();

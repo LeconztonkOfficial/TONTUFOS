@@ -10,6 +10,7 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import tontufosmp2.blocks.ModBlocks;
+import tontufosmp2.blocks.TemporaryLightBlock;
 import tontufosmp2.items.ModItems;
 
 public class ThrowableLightEntity extends ThrownItemEntity {
@@ -50,8 +51,9 @@ public class ThrowableLightEntity extends ThrownItemEntity {
 
             // Comprueba si el lugar donde se va a colocar el bloque de luz es reemplazable
             if (this.getWorld().getBlockState(placementPos).isReplaceable()) {
-                // Coloca el bloque de luz temporal.
-                this.getWorld().setBlockState(placementPos, ModBlocks.TEMPORARY_LIGHT_BLOCK.getDefaultState());
+                // Coloca el bloque de luz temporal con el estado 'BOOSTED' a 'false'.
+                this.getWorld().setBlockState(placementPos, ModBlocks.TEMPORARY_LIGHT_BLOCK.getDefaultState()
+                        .with(TemporaryLightBlock.BOOSTED, false));
             }
 
             // Elimina la entidad del proyectil.
