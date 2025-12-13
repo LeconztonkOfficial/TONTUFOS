@@ -83,3 +83,10 @@ fabricApi {
 jar {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
+
+// Para que no haga error con las cosas duplicadas
+//agregado para probar si el error de github se arregla
+
+tasks.named('sourcesJar', Jar) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
