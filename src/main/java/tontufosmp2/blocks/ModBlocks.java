@@ -2,6 +2,7 @@ package tontufosmp2.blocks;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -9,13 +10,19 @@ import tontufosmp2.Tontufosmp2;
 
 public class ModBlocks {
 
-    public static final Block LIGHT_MAGIC_BLOCK = register(
-            "light_magic_block",
-            new LightMagicBlock(
-                    FabricBlockSettings.create()
-                            .luminance(s -> 15)
-                            .noCollision()
-                            .nonOpaque()
+    /**
+     * Bloque de luz temporal e invisible.
+     * - Emite un nivel de luz de 15 (el máximo).
+     * - No tiene colisiones, por lo que los jugadores y entidades pueden atravesarlo.
+     * - Es completamente invisible y no obstruye la visión.
+     * - Se destruye a sí mismo después de un tiempo (ver TemporaryLightBlock.java).
+     */
+    public static final Block TEMPORARY_LIGHT_BLOCK = register(
+            "temporary_light_block",
+            new TemporaryLightBlock(
+                    FabricBlockSettings.copyOf(Blocks.AIR) // Copia propiedades del aire (invisible, sin colisión)
+                            .luminance(s -> 15) // Pero le añade luz
+                            .nonOpaque() // Asegura que no renderice caras
             )
     );
 
@@ -24,6 +31,7 @@ public class ModBlocks {
     }
 
     public static void registerModBlocks() {
-        System.out.println("Registering ModBlocks for " + Tontufosmp2.MOD_ID);
+        // Este método se llama durante la inicialización del mod para asegurar que los bloques se registren.
+        Tontufosmp2.LOGGER.info("Registering ModBlocks for " + Tontufosmp2.MOD_ID);
     }
 }

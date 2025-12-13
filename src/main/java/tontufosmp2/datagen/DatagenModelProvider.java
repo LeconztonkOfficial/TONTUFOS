@@ -14,7 +14,7 @@ public class DatagenModelProvider  extends FabricModelProvider {
     }
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        blockStateModelGenerator.registerSimpleState(ModBlocks.LIGHT_MAGIC_BLOCK);
+
     }
 
     @Override
