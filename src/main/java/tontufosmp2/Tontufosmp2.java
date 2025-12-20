@@ -8,6 +8,7 @@ import tontufosmp2.Posion.ConfusionEffect;
 import tontufosmp2.Posion.ModEffects;
 
 import tontufosmp2.blocks.ModBlocks;
+import tontufosmp2.effects.SilencioSepulcralEffects;
 import tontufosmp2.entities.ModEntities;
 import tontufosmp2.items.ModItemGroups;
 import tontufosmp2.items.ModItems;
@@ -27,13 +28,16 @@ public class Tontufosmp2 implements ModInitializer {
 	public void onInitialize()
     {
         ModBlocks.registerModBlocks();
+        SilencioSepulcralEffects.register();
         ModItems.registerItems();
         ModEntities.registerModEntities();
         ModItemGroups.registerItemGroups();
         ModEffects.registerEffects();
 
 
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
+
+
+        // This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 		LOGGER.info("Hello Fabric world!");

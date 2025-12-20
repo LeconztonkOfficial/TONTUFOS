@@ -1,12 +1,15 @@
 package tontufosmp2.items;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ArmorMaterial;
 import tontufosmp2.items.PolvoDeConfusionItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import tontufosmp2.Tontufosmp2;
+import tontufosmp2.registry.ModArmorMaterials;
 
 
 public class ModItems {
@@ -21,9 +24,17 @@ public class ModItems {
     // Item Huevo Purificador
     public static final Item HUEVOPURIFICADOR = registrerItem("huevopurificador", new Item(new Item.Settings()));
     // Item Máscara del Sepulcral
-    public static final Item MASCARADELSILENCIOSEPULCRAL = registrerItem("mascaradelsileciosepulcral", new Item(new Item.Settings()));
+    public static final Item MASCARADELSILENCIOSEPULCRAL =
+            registrerItem(
+                    "mascaradelsileciosepulcral",
+                    new SilencioSepulcralItem(
+                            ModArmorMaterials.SILENCIO_SEPULCRAL,
+                            ArmorItem.Type.HELMET, // ← ESTA LÍNEA
+                            new Item.Settings()
+                    )
+            );
     // Item Mazo Jgornet (
-    public static final Item MAZJGORNET = registrerItem("mazojgornet", new Item(new Item.Settings()));
+    public static final Item MAZJGORNET = registrerItem("mazojgornet", new MazojgornetItem(new Item.Settings().maxDamage(750)));
     // Item Orbe Potenciador
     public static final Item ORBEPOTENCIADOR = registrerItem("orbepotenciador", new Item(new Item.Settings()));
     // Item Pico Interdimencional
@@ -33,7 +44,7 @@ public class ModItems {
     // Item Polvo de Confucio
     public static final Item POLVODECONFUCION = registrerItem("polvodeconfucion", new PolvoDeConfusionItem(new Item.Settings()));
     // Item Sándwich de la Muerte
-    public static final Item SANDIWCHDELAMUERTE = registrerItem("sandwichdelamuerte", new Item(new Item.Settings()));
+    public static final Item SANDIWCHDELAMUERTE = registrerItem("sandwichdelamuerte", new SandwichDeLaMuerteItem(new Item.Settings()));
     // Item Taladro Excavador
     public static final Item TALADROEXCAVADOR = registrerItem("taladroexcavador", new Item(new Item.Settings()));
     // Item Talismán Protector
