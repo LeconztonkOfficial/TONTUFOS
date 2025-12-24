@@ -2,14 +2,15 @@ package tontufosmp2.items;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ArmorMaterial;
-import tontufosmp2.items.PolvoDeConfusionItem;
+
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import tontufosmp2.Tontufosmp2;
 import tontufosmp2.registry.ModArmorMaterials;
+import net.minecraft.item.ToolMaterials;
+
 
 
 public class ModItems {
@@ -20,25 +21,17 @@ public class ModItems {
     // Item Collardelojoinverso Inverso
     public static final Item COJOINVERSO = registrerItem("cojoinverso", new Item(new Item.Settings()));
     // Item Cristal del Recuerdo
-    public static final Item CRISTALDELRECUERDO = registrerItem("cristaldelrecuerdo", new Item(new Item.Settings()));
+    public static final Item CRISTALDELRECUERDO = Registry.register(Registries.ITEM, new Identifier("tontufosmp2", "cristaldelrecuerdo"), new CristalDeRecuerdo(new Item.Settings().maxCount(16)));
     // Item Huevo Purificador
-    public static final Item HUEVOPURIFICADOR = registrerItem("huevopurificador", new Item(new Item.Settings()));
+    public static final Item HUEVOPURIFICADOR = Registry.register(Registries.ITEM, new Identifier("tontufosmp2", "huevopurificador"), new HuevoPurificadorItem(new Item.Settings().maxCount(16)));
     // Item Máscara del Sepulcral
-    public static final Item MASCARADELSILENCIOSEPULCRAL =
-            registrerItem(
-                    "mascaradelsileciosepulcral",
-                    new SilencioSepulcralItem(
-                            ModArmorMaterials.SILENCIO_SEPULCRAL,
-                            ArmorItem.Type.HELMET, // ← ESTA LÍNEA
-                            new Item.Settings()
-                    )
-            );
+    public static final Item MASCARADELSILENCIOSEPULCRAL = registrerItem("mascaradelsileciosepulcral", new SilencioSepulcralItem(ModArmorMaterials.SILENCIO_SEPULCRAL, ArmorItem.Type.HELMET, new Item.Settings()));
     // Item Mazo Jgornet (
     public static final Item MAZJGORNET = registrerItem("mazojgornet", new MazojgornetItem(new Item.Settings().maxDamage(750)));
     // Item Orbe Potenciador
     public static final Item ORBEPOTENCIADOR = registrerItem("orbepotenciador", new Item(new Item.Settings()));
     // Item Pico Interdimencional
-    public static final Item PICOINTERDIMENCIONAL = registrerItem("picointerdimencional", new Item(new Item.Settings()));
+    public static final Item PICOINTERDIMENCIONAL = Registry.register(Registries.ITEM, new Identifier("tontufosmp2", "picointerdimencional"), new DimensionalPickaxe(ToolMaterials.DIAMOND, 2, -2.8f, new FabricItemSettings().maxDamage(1561)));
     // Item Poción de Luz
     public static final Item POCIONLUZ = registrerItem("pocionluz", new PocionLuzItem(new Item.Settings()));
     // Item Polvo de Confucio
