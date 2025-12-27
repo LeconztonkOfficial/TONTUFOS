@@ -54,6 +54,24 @@ public static final ItemGroup MALDICIONES = registrerItemGroup("maldiciones",
                 }).build()
 );
 
+
+
+    public static final ItemGroup ENCANTAMIENTOS = registrerItemGroup("encantamientos",
+            FabricItemGroup.builder().displayName(Text.translatable("itemGroup.tontufosmp2.encantamientos"))
+                    .icon(() -> new ItemStack(ModItems.ICONO_ENCANTAMIENTO)).entries((displayContext, entries) -> {
+                        entries.add(ModItems.ALIENTODELALBA);
+                        entries.add(ModItems.ALIENTODEVIDA);
+                        entries.add(ModItems.GRANFORJA);
+                        entries.add(ModItems.MEDIANOCHE);
+                        entries.add(ModItems.OJODECAZADOR);
+                        entries.add(ModItems.PULSOVENENOSO);
+                        entries.add(ModItems.PULSOVITAL);
+                        entries.add(ModItems.REFUGIOSOLAR);
+                        entries.add(ModItems.SALTOVITAL);
+                    }).build()
+    );
+
+
     private static ItemGroup registrerItemGroup (String itemId, ItemGroup itemGroup){
         return Registry.register(Registries.ITEM_GROUP, new Identifier(Tontufosmp2.MOD_ID, itemId), itemGroup);
     }

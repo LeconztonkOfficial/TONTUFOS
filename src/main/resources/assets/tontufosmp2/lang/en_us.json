@@ -2,6 +2,7 @@
 
   "itemGroup.tontufosmp2.magic_group": "Items Magicos",
   "itemGroup.tontufosmp2.maldiciones": "Maldiciones",
+  "itemGroup.tontufosmp2.encantamientos": "Encantamientos",
   "effect.tontufosmp2.confusion": "Confusión Intensa",
   "item.tontufosmp2.garradimencional": "Garra Dimencional",
   "item.tontufosmp2.cojoinverso": "Collar del Ojo Inverso",
@@ -32,5 +33,14 @@
   "item.tontufosmp2.ojomaldito": "Ojo Maldito",
   "item.tontufosmp2.piepesado": "Pies Pesados",
   "item.tontufosmp2.sedeterna": "Sed Eterna",
-  "item.tontufosmp2.tormentonocturno": "Tormento Nocturno"
+  "item.tontufosmp2.tormentonocturno": "Tormento Nocturno",
+  "item.tontufosmp2.alientodelalba": "Aliento del Alba",
+  "item.tontufosmp2.alientodevida": "Alientodevida",
+  "item.tontufosmp2.granforja": "Gran Forja",
+  "item.tontufosmp2.medianoche": "Media Noche",
+  "item.tontufosmp2.ojodecazador": "Ojo del Cazador",
+  "item.tontufosmp2.pulsovenenoso": "Pulso Venenoso",
+  "item.tontufosmp2.pulsovital": "Pulso vital",
+  "item.tontufosmp2.refugiosolar": "Refugio Solar",
+  "item.tontufosmp2.saltovital": "Salto Vital"
 }

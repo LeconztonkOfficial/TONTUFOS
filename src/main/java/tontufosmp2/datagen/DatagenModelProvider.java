@@ -51,5 +51,15 @@ public class DatagenModelProvider  extends FabricModelProvider {
      itemModelGenerator.register(ModItems.TALISMANPROTECTOR, Models.GENERATED);
      itemModelGenerator.register(ModItems.TIEMPOCOMPRIMIDO, Models.GENERATED);
      itemModelGenerator.register(ModItems.TORMENTONOCTURNO, Models.GENERATED);
+     itemModelGenerator.register(ModItems.ALIENTODELALBA, Models.GENERATED);
+     itemModelGenerator.register(ModItems.ALIENTODEVIDA, Models.GENERATED);
+     itemModelGenerator.register(ModItems.GRANFORJA, Models.GENERATED);
+     itemModelGenerator.register(ModItems.MEDIANOCHE, Models.GENERATED);
+     itemModelGenerator.register(ModItems.OJODECAZADOR, Models.GENERATED);
+     itemModelGenerator.register(ModItems.PULSOVENENOSO, Models.GENERATED);
+     itemModelGenerator.register(ModItems.PULSOVITAL, Models.GENERATED);
+     itemModelGenerator.register(ModItems.REFUGIOSOLAR, Models.GENERATED);
+     itemModelGenerator.register(ModItems.SALTOVITAL, Models.GENERATED);
+     itemModelGenerator.register(ModItems.ICONO_ENCANTAMIENTO, Models.GENERATED);
     }
 }

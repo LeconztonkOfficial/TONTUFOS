@@ -43,7 +43,7 @@ public class ModItems {
     // Item Talismán Protector
     public static final Item TALISMANPROTECTOR = registrerItem("talismanprotector", new Item(new Item.Settings()));
     // Item Tiempo Comprimido
-    public static final Item TIEMPOCOMPRIMIDO = registrerItem("tiempocomprimido", new Item(new Item.Settings()));
+    public static final Item TIEMPOCOMPRIMIDO = Registry.register(Registries.ITEM, new Identifier("tontufosmp2", "tiempocomprimido"), new TiempoComprimidoItem(new Item.Settings().maxDamage(64)));
 
     //Aqui comienzan las maldiciones
     //Icono Maldiciones
@@ -80,6 +80,18 @@ public class ModItems {
     public static final Item SEDETERNA = registrerItem("sedeterna", new Item(new Item.Settings()));
     //Maldiciones Tormento Nocturno
     public static final Item TORMENTONOCTURNO = registrerItem("tormentonocturno", new Item(new Item.Settings()));
+
+     // Encantamientos
+     public static final Item ICONO_ENCANTAMIENTO = registrerItem("icono_encantamiento", new Item(new Item.Settings()));
+     public static final Item ALIENTODELALBA = registrerItem("alientodelalba", new Item(new Item.Settings()));
+    public static final Item ALIENTODEVIDA = registrerItem("alientodevida", new Item(new Item.Settings()));
+    public static final Item GRANFORJA = registrerItem("granforja", new Item(new Item.Settings()));
+    public static final Item MEDIANOCHE = registrerItem("medianoche", new Item(new Item.Settings()));
+    public static final Item OJODECAZADOR = registrerItem("ojodecazador", new Item(new Item.Settings()));
+    public static final Item PULSOVENENOSO = registrerItem("pulsovenenoso", new Item(new Item.Settings()));
+    public static final Item REFUGIOSOLAR = registrerItem("refugiosolar", new Item(new Item.Settings()));
+    public static final Item SALTOVITAL = registrerItem("saltovital", new Item(new Item.Settings()));
+    public static final Item PULSOVITAL = registrerItem("pulsovital", new Item(new Item.Settings()));
 
 
 
