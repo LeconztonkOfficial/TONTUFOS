@@ -42,5 +42,11 @@
   "item.tontufosmp2.pulsovenenoso": "Pulso Venenoso",
   "item.tontufosmp2.pulsovital": "Pulso vital",
   "item.tontufosmp2.refugiosolar": "Refugio Solar",
-  "item.tontufosmp2.saltovital": "Salto Vital"
+  "item.tontufosmp2.saltovital": "Salto Vital",
+  "enchantment.tontufosmp2.fuego_solar": "Refugio Solar",
+  "enchantment.tontufosmp2.fuego_solar.desc": "Regenera vida bajo el sol",
+  "enchantment.tontufosmp2.aliento_del_alba": "Aliento del Alba",
+  "enchantment.tontufosmp2.aliento_de_vida": "Aliento de Vida",
+  "enchantment.tontufosmp2.aliento_del_alba.desc": "Mayor Velocidad y Curacion antes del Medio Dia",
+  "enchantment.tontufosmp2.aliento_de_vida.desc": "+2 Extra en Vida"
 }

@@ -8,7 +8,9 @@ import org.slf4j.LoggerFactory;
 import tontufosmp2.Posion.ModEffects;
 import tontufosmp2.blocks.ModBlocks;
 import tontufosmp2.effects.SilencioSepulcralEffects;
+import tontufosmp2.enchantment.ModEnchantments;
 import tontufosmp2.entities.ModEntities;
+import tontufosmp2.event.ModEnchantmentsTickHandler;
 import tontufosmp2.items.ModItemGroups;
 import tontufosmp2.items.ModItems;
 import tontufosmp2.net.ModMessages;
@@ -26,12 +28,13 @@ public class Tontufosmp2 implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		ModBlocks.registerModBlocks();
+        ModEnchantments.register();
+        ModEnchantmentsTickHandler.register();
+        ModBlocks.registerModBlocks();
 		SilencioSepulcralEffects.register();ModItems.registerItems();
 		ModEntities.registerModEntities();
 		ModItemGroups.registerItemGroups();
 		ModEffects.registerEffects();
-
 		ComandosTiempo.registrarComandos();
 		ModMessages.registrarPaquetesC2S(); // Actualizado a español
 

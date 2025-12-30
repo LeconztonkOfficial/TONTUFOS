@@ -10,6 +10,7 @@ import net.minecraft.util.Identifier;
 import tontufosmp2.Tontufosmp2;
 import tontufosmp2.registry.ModArmorMaterials;
 import net.minecraft.item.ToolMaterials;
+import net.minecraft.item.EnchantedBookItem;
 
 
 
@@ -83,13 +84,13 @@ public class ModItems {
 
      // Encantamientos
      public static final Item ICONO_ENCANTAMIENTO = registrerItem("icono_encantamiento", new Item(new Item.Settings()));
-     public static final Item ALIENTODELALBA = registrerItem("alientodelalba", new Item(new Item.Settings()));
-    public static final Item ALIENTODEVIDA = registrerItem("alientodevida", new Item(new Item.Settings()));
+     public static final Item ALIENTODELALBA = registrerItem("alientodelalba", new AlientoDelAlbaItem(new Item.Settings().maxCount(1)));
+    public static final Item ALIENTODEVIDA = registrerItem("alientodevida", new AlientoDeVidaItem(new Item.Settings().maxCount(1)));
     public static final Item GRANFORJA = registrerItem("granforja", new Item(new Item.Settings()));
     public static final Item MEDIANOCHE = registrerItem("medianoche", new Item(new Item.Settings()));
     public static final Item OJODECAZADOR = registrerItem("ojodecazador", new Item(new Item.Settings()));
     public static final Item PULSOVENENOSO = registrerItem("pulsovenenoso", new Item(new Item.Settings()));
-    public static final Item REFUGIOSOLAR = registrerItem("refugiosolar", new Item(new Item.Settings()));
+    public static final Item REFUGIOSOLAR = registrerItem("refugiosolar", new RefugioSolarItem(new Item.Settings().maxCount(1)));
     public static final Item SALTOVITAL = registrerItem("saltovital", new Item(new Item.Settings()));
     public static final Item PULSOVITAL = registrerItem("pulsovital", new Item(new Item.Settings()));
 
