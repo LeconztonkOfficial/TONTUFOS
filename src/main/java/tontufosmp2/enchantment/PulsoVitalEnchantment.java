@@ -1,4 +1,33 @@
 package tontufosmp2.enchantment;
 
-public class PulsoVitalEnchantment {
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentTarget;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ItemStack;
+
+public class PulsoVitalEnchantment extends Enchantment {
+
+    public PulsoVitalEnchantment() {
+        super(
+                Rarity.RARE,
+                EnchantmentTarget.ARMOR,
+                new EquipmentSlot[]{
+                        EquipmentSlot.HEAD,
+                        EquipmentSlot.CHEST,
+                        EquipmentSlot.LEGS,
+                        EquipmentSlot.FEET
+                }
+        );
+    }
+
+    @Override
+    public int getMaxLevel() {
+        return 1;
+    }
+
+    @Override
+    public boolean isAcceptableItem(ItemStack stack) {
+        return stack.getItem() instanceof ArmorItem;
+    }
 }

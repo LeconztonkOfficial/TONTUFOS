@@ -8,6 +8,14 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
 import tontufosmp2.enchantment.ModEnchantments;
+import net.minecraft.item.ItemStack;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.util.math.Vec3d;
+import java.util.List;
+
 
 public class ModEnchantmentsTickHandler {
 
@@ -21,6 +29,12 @@ public class ModEnchantmentsTickHandler {
             checkFuegoSolar(player);
             checkAlientoDelAlba(player);
             checkAlientoDeVida(player);
+            checkGranForja(player);
+            checkMedianoche(player);
+            checkOjoDeCazador(player);
+            checkPulsoVenenoso(player);
+            checkSaltoVital(player);
+            checkPulsoVital(player);
         }
     }
 
@@ -149,6 +163,255 @@ public class ModEnchantmentsTickHandler {
             player.getAttributeInstance(net.minecraft.entity.attribute.EntityAttributes.GENERIC_MAX_HEALTH)
                     .setBaseValue(baseHealth + extraHealth);
         }
+    }
+
+    // GRAN FORJA ENCANTAMIENTO
+
+
+    private static void checkGranForja(PlayerEntity player) {
+        ItemStack shield = player.getOffHandStack(); // Escudo en la mano secundaria
+        int nivel = EnchantmentHelper.getLevel(ModEnchantments.GRAN_FORJA, shield);
+
+        if (nivel <= 0) return;
+
+        // 1️ Aplicar resistencia temporal física
+        player.addStatusEffect(new net.minecraft.entity.effect.StatusEffectInstance(
+                net.minecraft.entity.effect.StatusEffects.RESISTANCE,
+                80,
+                nivel - 1,
+                false,
+                false,
+                true
+        ));
+
+        // 2 Aumento de daño de armas (para simplificar, aplicamos un boost de Strength)
+        player.addStatusEffect(new net.minecraft.entity.effect.StatusEffectInstance(
+                net.minecraft.entity.effect.StatusEffects.STRENGTH,
+                80,
+                nivel - 1,
+                false,
+                false,
+                true
+        ));
+    }
+
+    // ------------------------
+// MEDIANOCHE (Invisibilidad fuerte balanceada)
+// ------------------------
+    private static void checkMedianoche(PlayerEntity player) {
+
+        // Medianoche SOLO en botas
+        if (EnchantmentHelper.getLevel(
+                ModEnchantments.MEDIA_NOCHE,
+                player.getEquippedStack(EquipmentSlot.FEET)
+        ) <= 0) return;
+
+        World world = player.getWorld();
+        long time = world.getTimeOfDay() % 24000;
+
+        boolean esDeNoche = time >= 13000 && time <= 23000;
+        boolean pocaLuz = world.getLightLevel(player.getBlockPos()) <= 4;
+
+        // Si falla una condición, no se aplican efectos
+        if (!esDeNoche || !pocaLuz || player.hurtTime > 0) {
+            return;
+        }
+
+        // Invisibilidad fuerte
+        player.addStatusEffect(new StatusEffectInstance(
+                StatusEffects.INVISIBILITY,
+                40,
+                0,
+                false,
+                false,
+                true
+        ));
+
+        // Velocidad de sigilo
+        player.addStatusEffect(new StatusEffectInstance(
+                StatusEffects.SPEED,
+                40,
+                0,
+                false,
+                false,
+                true
+        ));
+
+        // Debilita reacción enemiga (opcional pero interesante)
+        player.addStatusEffect(new StatusEffectInstance(
+                StatusEffects.WEAKNESS,
+                40,
+                0,
+                false,
+                false,
+                true
+        ));
+    }
+
+    // ------------------------
+// OJO DE CAZADOR
+// ------------------------
+    private static void checkOjoDeCazador(PlayerEntity player) {
+
+        // Solo si está en el casco
+        if (EnchantmentHelper.getLevel(
+                ModEnchantments.OJO_CAZADOR,
+                player.getEquippedStack(EquipmentSlot.HEAD)
+        ) <= 0) return;
+
+        // Requiere estar agachado (activar conscientemente)
+        if (!player.isSneaking()) return;
+
+        World world = player.getWorld();
+
+        // Cooldown simple usando edad del jugador
+        if (player.age % 40 != 0) return; // cada 2 segundos
+
+        double radio = 16.0;
+
+        world.getEntitiesByClass(
+                net.minecraft.entity.mob.HostileEntity.class,
+                player.getBoundingBox().expand(radio),
+                mob -> mob.isAlive()
+        ).forEach(mob -> {
+
+            // Efecto de marcado
+            mob.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.GLOWING,
+                    60, // 3 segundos
+                    0,
+                    false,
+                    false,
+                    true
+            ));
+        });
+    }
+
+    ////PULSO VENENOSO
+
+    private static void checkPulsoVenenoso(PlayerEntity player) {
+
+        World world = player.getWorld();
+        if (world.isClient) return;
+
+        int level = EnchantmentHelper.getLevel(
+                ModEnchantments.PULSO_VENENOSO,
+                player.getEquippedStack(EquipmentSlot.CHEST)
+        );
+
+        if (level <= 0) return;
+
+        // Solo cuando el jugador ataca
+        if (!player.handSwinging) return;
+
+        // Cooldown simple
+        if (player.getItemCooldownManager().isCoolingDown(
+                player.getMainHandStack().getItem()
+        )) return;
+
+        List<LivingEntity> targets = world.getEntitiesByClass(
+                LivingEntity.class,
+                player.getBoundingBox().expand(2.5),
+                entity -> entity instanceof HostileEntity && entity.isAlive()
+        );
+
+        for (LivingEntity target : targets) {
+
+            Vec3d look = player.getRotationVec(1.0F);
+            Vec3d direction = target.getPos().subtract(player.getPos()).normalize();
+
+            // Debe estar frente al jugador (cono de ataque)
+            if (look.dotProduct(direction) < 0.8) continue;
+
+            // Aplicar veneno
+            target.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.POISON,
+                    60 + (level * 20), // duración
+                    0                  // nivel del veneno
+            ));
+
+            // Cooldown del arma
+            player.getItemCooldownManager().set(
+                    player.getMainHandStack().getItem(),
+                    40
+            );
+
+            break; // solo un objetivo por golpe
+        }
+    }
+
+
+//SALTO VITAL
+
+
+    private static void checkSaltoVital(PlayerEntity player) {
+
+        int level = EnchantmentHelper.getLevel(
+                ModEnchantments.SALTO_VITAL,
+                player.getEquippedStack(EquipmentSlot.FEET)
+        );
+
+        if (level <= 0) return;
+
+        // Jump Boost constante
+        player.addStatusEffect(new StatusEffectInstance(
+                StatusEffects.JUMP_BOOST,
+                20,    // 1 segundo (se renueva)
+                0,
+                false,
+                false,
+                true
+        ));
+
+        // Reducir daño por caída
+        if (player.fallDistance > 3.0F) {
+            player.fallDistance *= 0.6F;
+        }
+
+        // Consumir hambre SOLO cuando salta (server-safe)
+        if (!player.isOnGround() && player.getVelocity().y > 0.0D) {
+            if (player.getHungerManager().getFoodLevel() > 0) {
+                player.getHungerManager().add(-1, 0.0F);
+            }
+        }
+    }
+
+
+    private static void checkPulsoVital(PlayerEntity player) {
+
+        int level = EnchantmentHelper.getLevel(
+                ModEnchantments.PULSO_VITAL,
+                player.getEquippedStack(EquipmentSlot.CHEST)
+        );
+
+        if (level <= 0) return;
+
+        float vidaActual = player.getHealth();
+        float vidaMax = player.getMaxHealth();
+
+        // 30% de vida o menos
+        if (vidaActual / vidaMax > 0.3F) return;
+
+        // Cooldown usando el encantamiento como referencia
+        if (player.getItemCooldownManager().isCoolingDown(
+                player.getEquippedStack(EquipmentSlot.CHEST).getItem()
+        )) return;
+
+        // Regeneración fuerte de emergencia
+        player.addStatusEffect(new StatusEffectInstance(
+                StatusEffects.REGENERATION,
+                100,   // 5 segundos
+                2,     // Regeneración III
+                false,
+                false,
+                true
+        ));
+
+        // Cooldown largo (30 segundos)
+        player.getItemCooldownManager().set(
+                player.getEquippedStack(EquipmentSlot.CHEST).getItem(),
+                600
+        );
     }
 
 

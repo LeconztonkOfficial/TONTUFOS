@@ -16,14 +16,20 @@ import tontufosmp2.items.ModItems;
 import tontufosmp2.net.ModMessages;
 import tontufosmp2.tiempo.ComandosTiempo;
 import tontufosmp2.tiempo.ControladorTiempoJugador;
-
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.minecraft.server.network.ServerPlayerEntity;
 import java.util.HashMap;
 import java.util.Map;
+import tontufosmp2.curse.CurseData;
+import tontufosmp2.curse.CurseEffects;
+import tontufosmp2.curse.CurseManager;
+import tontufosmp2.curse.CurseMessages;
+import  tontufosmp2.curse.CurseWarningMessages;
 
 public class Tontufosmp2 implements ModInitializer {
 	public static final String MOD_ID = "tontufosmp2";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-
+    private static final int WARNING_TICKS = 1200; // 2 minutos
 	private static final Map<MinecraftServer, ControladorTiempoJugador> serverTimeControllers = new HashMap<>();
 
 	@Override
@@ -52,10 +58,38 @@ public class Tontufosmp2 implements ModInitializer {
 			}
 		});
 
-		LOGGER.info("¡Tontufosmp2 inicializado correctamente con sistema de control de tiempo!");
+        ServerTickEvents.END_SERVER_TICK.register(server -> {
+
+            for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
+
+                CurseData curse = CurseManager.get(player);
+
+                if (curse == null) continue;
+
+                long time = player.getWorld().getTime();
+
+                // ⚠️ AVISO PREVIO
+                if (!curse.wasWarned() && time >= curse.activateTime() - WARNING_TICKS) {
+                    CurseWarningMessages.send(player);
+                    curse.markWarned();
+                }
+
+                // 💀 ACTIVACIÓN FINAL
+                if (time >= curse.activateTime()) {
+                    CurseEffects.applyCurse(player, curse.curseId());
+                    CurseMessages.send(player, curse.curseId());
+                    CurseManager.remove(player);
+                }
+            }
+        });
+
+
+        LOGGER.info("¡Tontufosmp2 inicializado correctamente con sistema de control de tiempo!");
 	}
 
 	public static ControladorTiempoJugador getServerTimeController(MinecraftServer server) {
 		return serverTimeControllers.get(server);
 	}
+
 }
+

@@ -50,49 +50,49 @@ public class ModItems {
     //Icono Maldiciones
     public static final Item ICONO_MALDICIONES = registrerItem("icono_maldiciones", new Item(new Item.Settings()));
     //Maldicion Agonia del Veterano
-    public static final Item AGONIAVETERANO = registrerItem("agoniaveterano", new Item(new Item.Settings()));
+    public static final Item AGONIAVETERANO = registrerItem("agoniaveterano", new CurseScrollItem(new Item.Settings(),"agoniaveterano"));
     //Maldicion Cerebro Fragmentado
-    public static final Item CEREBROFRAGMENTO = registrerItem("cerebrofragmento", new Item(new Item.Settings()));
+    public static final Item CEREBROFRAGMENTO = registrerItem("cerebrofragmento", new CurseScrollItem(new Item.Settings(), "cerebrofragmento"));
     //Maldicion Corazon Fragmentado
-    public static final Item CORAZONFRAGMENTADO = registrerItem("corazonfragmentado", new Item(new Item.Settings()));
+    public static final Item CORAZONFRAGMENTADO = registrerItem("corazonfragmentado", new CurseScrollItem(new Item.Settings(), "corazonfragmentado"));
     //Maldicion Decadencia del ciclo
-    public static final Item DECADENCIADELCICLO = registrerItem("decadenciadelciclo", new Item(new Item.Settings()));
+    public static final Item DECADENCIADELCICLO = registrerItem("decadenciadelciclo", new CurseScrollItem(new Item.Settings(),"decadenciadelciclo"));
     //Maldicion Eco del dolor
-    public static final Item ECODELDOLOR = registrerItem("ecodeldolor", new Item(new Item.Settings()));
+    public static final Item ECODELDOLOR = registrerItem("ecodeldolor", new CurseScrollItem(new Item.Settings(),"ecodeldolor"));
     //Maldicion Eco del pasado
-    public static final Item ECODELPASADO = registrerItem("ecodelpasado", new Item(new Item.Settings()));
+    public static final Item ECODELPASADO = registrerItem("ecodelpasado", new CurseScrollItem(new Item.Settings(),"ecodelpasado"));
     //Maldicion Fatiga Ancestral
-    public static final Item FATIGAANCESTRAL = registrerItem("fatigaancestral", new Item(new Item.Settings()));
+    public static final Item FATIGAANCESTRAL = registrerItem("fatigaancestral", new CurseScrollItem(new Item.Settings(), "fatigaancestral"));
     //Maldicion Hambre del Antiguo
-    public static final Item HAMBREDELANTIGUO = registrerItem("hambredelantiguo", new Item(new Item.Settings()));
+    public static final Item HAMBREDELANTIGUO = registrerItem("hambredelantiguo", new CurseScrollItem(new Item.Settings(),"hambredelantiguo"));
     //Maldicion Hambre de la Sombra
-    public static final Item HAMBRESOMBRA = registrerItem("hambresombra", new Item(new Item.Settings()));
+    public static final Item HAMBRESOMBRA = registrerItem("hambresombra", new CurseScrollItem(new Item.Settings(),"hambresombra"));
     //Maldicion Lenguaje del plomo
-    public static final Item LENGUAPLOMO = registrerItem("lenguaplomo", new Item(new Item.Settings()));
+    public static final Item LENGUAPLOMO = registrerItem("lenguaplomo", new CurseScrollItem(new Item.Settings(),"lenguaplomo"));
     //Maldicion Ligamento del alma
-    public static final Item LIGAMENTODELALMA = registrerItem("ligamentodelalma", new Item(new Item.Settings()));
+    public static final Item LIGAMENTODELALMA = registrerItem("ligamentodelalma", new CurseScrollItem(new Item.Settings(), "ligamentodelalma"));
     //Maldicion Manto del Olvido
-    public static final Item MANTODELOLVIDO = registrerItem("mantodelolvido", new Item(new Item.Settings()));
+    public static final Item MANTODELOLVIDO = registrerItem("mantodelolvido", new CurseScrollItem(new Item.Settings(), "mantodelolvido"));
     //Maldiciones Ojo maldito
-    public static final Item OJOMALDITO = registrerItem("ojomaldito", new Item(new Item.Settings()));
+    public static final Item OJOMALDITO = registrerItem("ojomaldito", new CurseScrollItem(new Item.Settings(), "ojomaldito"));
     //Malciciones Pies Pesado
-    public static final Item PIEPESADO = registrerItem("piepesado", new Item(new Item.Settings()));
+    public static final Item PIEPESADO = registrerItem("piepesado", new CurseScrollItem(new Item.Settings(), "piepesado"));
     //Maldiciones Sed Eterna
-    public static final Item SEDETERNA = registrerItem("sedeterna", new Item(new Item.Settings()));
+    public static final Item SEDETERNA = registrerItem("sedeterna", new CurseScrollItem(new Item.Settings(), "sedeterna"));
     //Maldiciones Tormento Nocturno
-    public static final Item TORMENTONOCTURNO = registrerItem("tormentonocturno", new Item(new Item.Settings()));
+    public static final Item TORMENTONOCTURNO = registrerItem("tormentonocturno", new CurseScrollItem(new Item.Settings(), "tormentonocturno" ));
 
      // Encantamientos
      public static final Item ICONO_ENCANTAMIENTO = registrerItem("icono_encantamiento", new Item(new Item.Settings()));
      public static final Item ALIENTODELALBA = registrerItem("alientodelalba", new AlientoDelAlbaItem(new Item.Settings().maxCount(1)));
     public static final Item ALIENTODEVIDA = registrerItem("alientodevida", new AlientoDeVidaItem(new Item.Settings().maxCount(1)));
-    public static final Item GRANFORJA = registrerItem("granforja", new Item(new Item.Settings()));
-    public static final Item MEDIANOCHE = registrerItem("medianoche", new Item(new Item.Settings()));
-    public static final Item OJODECAZADOR = registrerItem("ojodecazador", new Item(new Item.Settings()));
-    public static final Item PULSOVENENOSO = registrerItem("pulsovenenoso", new Item(new Item.Settings()));
+    public static final Item GRANFORJA = registrerItem("granforja", new GranForjaItem(new Item.Settings().maxCount(1)));
+    public static final Item MEDIANOCHE = registrerItem("medianoche", new MediaNocheItem(new Item.Settings().maxCount(1)));
+    public static final Item OJODECAZADOR = registrerItem("ojodecazador", new OjoCazadorItem(new Item.Settings().maxCount(1)));
+    public static final Item PULSOVENENOSO = registrerItem("pulsovenenoso", new PulsoVenenosoItem(new Item.Settings()));
     public static final Item REFUGIOSOLAR = registrerItem("refugiosolar", new RefugioSolarItem(new Item.Settings().maxCount(1)));
-    public static final Item SALTOVITAL = registrerItem("saltovital", new Item(new Item.Settings()));
-    public static final Item PULSOVITAL = registrerItem("pulsovital", new Item(new Item.Settings()));
+    public static final Item SALTOVITAL = registrerItem("saltovital", new SaltoVitalItem(new Item.Settings()));
+    public static final Item PULSOVITAL = registrerItem("pulsovital", new PulsoVitalItem(new Item.Settings()));
 
 
 
